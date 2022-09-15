@@ -16,20 +16,19 @@
 	<?php
 	if (!isset($_COOKIE["Hodl"])) {
 		echo "
-		<div class='modal is-active' id='ad'>
-		<div class='modal-background'></div>
-		<div class='modal-card'>
-    <header class='modal-card-head'>
-      <p class='modal-card-title'>Advertisement</p>
-      <button onclick='closeAd()' class='delete' aria-label='close'></button>
-    </header>
-    <section class='modal-card-image'>
-	<p class='image'>
-	<img src='/static/images/ad.png' alt=''>
-  </p>
-    </section>
-  </div>
-		  
+		<div class='modal' id='ad'>
+			<div class='modal-box'>
+				<div class='modal-content border-thin-b'>
+					<header class='modal-header'>
+						<button class='round' onclick='closeAd()'>X</button>
+					</header>
+				</div>
+				<div class='modal-content'>
+					<a href='http://durgasoft.com'>
+						<img class='modal-image' src='/static/images/ad.png' alt=''>
+					</a>
+				</div>
+			</div>
 	  	</div>";
 		setcookie('Hodl', True, time() + 60 * 2, '/');
 	}
