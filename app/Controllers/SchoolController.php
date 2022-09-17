@@ -14,6 +14,18 @@ class SchoolController extends BaseController{
         return view('index', $data);
     }
 
+    public function schools() {
+		$data["count"] = $this->model->count();
+        $data["skoly"] = $this->model->listSchools();
+        return view('schools', $data);
+    }
+
+    public function school($name) {
+        $data["info"] = $this->model->getSchool($name);
+		$data["name"] = $name;
+        return view('school', $data);
+    }
+
     public function booksPaginated($n) {
         $pagedArray = array_chunk($this->model->listBooksPaginated(), 30, true);
         $page = $pagedArray[$n-1];
