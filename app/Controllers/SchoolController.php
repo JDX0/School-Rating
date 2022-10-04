@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Controllers;
+use CodeIgniter\Controller;
 
-class SchoolController extends BaseController{
-
+class SchoolController extends Controller{
 	function __construct() {
         $this->model = new \App\Models\SchoolModel();;
     }
@@ -20,10 +20,27 @@ class SchoolController extends BaseController{
         return view('schools', $data);
     }
 
+    public function test() {
+		//$data["count"] = $this->model->count();
+        //$data["skoly"] = $this->model->listSchools();
+    return view('n/index'/*, $data*/);
+    }
+
     public function school($name) {
         $data["info"] = $this->model->getSchool($name);
-		$data["name"] = $name;
+        $data["comments"] = $this->model->getSchoolComments($data["info"][0]->id);
         return view('school', $data);
+    }
+
+    public function schoolById($id) {
+        $data["info"] = $this->model->getSchoolById($id);
+        $data["comments"] = $this->model->getSchoolComments($id);
+        return view('school', $data);
+    }
+
+    public function submitComment($id) {
+        $this->model->submitComment($id,$this->request->getPost('commentText'));
+        return $this->schoolById($id);
     }
 
     public function booksPaginated($n) {

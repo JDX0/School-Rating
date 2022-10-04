@@ -33,7 +33,10 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'SchoolController::index');
 $routes->get('/schools', 'SchoolController::schools');
+$routes->get('/test', 'SchoolController::test');
 $routes->get('/school/(:any)', 'SchoolController::school/$1');
+
+$routes->post('/school/(:num)/submit', 'SchoolController::submitComment/$1');
 
 /*
  * --------------------------------------------------------------------

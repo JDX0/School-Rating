@@ -1,5 +1,7 @@
 <?= $this->extend("layouts/view"); ?>
-<?= $this->section("title"); echo $info[0]->nazev; $this->endSection(); ?>
+<?= $this->section("title");
+echo $info[0]->nazev . ' - Hodnocení Škol';
+$this->endSection(); ?>
 <?= $this->section("header"); ?>
 <?= $this->endSection(); ?>
 <?= $this->section("content"); ?>
@@ -10,6 +12,7 @@
 			<?php
 			foreach ($info as $skola) {
 				echo '
+					<!-- Info -->
 					<div class="card">
 						<div class="card-content">
 							<a href="school/', $skola->nazev, '">
@@ -17,7 +20,35 @@
 								<h1>', $skola->nazev, '</h1>
 							</a>
 							<p>', $skola->mesto_nazev, '</p>
-							<a href="', $skola->link_skoly, '">web</a>
+							
+							<a href="', $skola->link_skoly, '" >
+							<div class="bright-button">
+								<p >web</p>
+								</div>
+							</a>
+							
+						</div>
+					</div>
+					<!-- Comments -->
+					<div class="card">
+						<div class="card-content">
+							<h1>Přidat hodnocení</h1>
+							<p>Co si myslíte o této škole vy?</p>
+							<form action="/school/', $skola->id, '/submit" method="post">
+								<textarea name="commentText"></textarea>
+								<input type="submit">
+							</form>
+						</div>
+					</div>
+					
+				';
+			}
+			foreach ($comments as $comment) {
+				echo '
+					<div class="card">
+						<div class="card-content">
+							<h1>',$comment->text,'</h1>
+							<p>cid=',$comment->id,'</p>
 						</div>
 					</div>
 					

@@ -101,4 +101,14 @@ img {
   -moz-background-clip: text;
   -moz-text-fill-color: transparent; }
 
+.button, .bright-button {
+  border-radius: 1rem;
+  padding: 1rem;
+  transition-property: all;
+  transition-duration: 0.2s; }
+
+.bright-button:hover {
+  background-color: #ff69cd;
+  box-shadow: 0 0 5px #ff69cd, 0 0 25px #ff69cd, 0 0 50px #ff69cd, 0 0 100px #ff69cd; }
+
 /*# sourceMappingURL=custom.css.map */
