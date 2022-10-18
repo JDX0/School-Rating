@@ -32,6 +32,11 @@ class SchoolController extends Controller{
         return view('school', $data);
     }
 
+    public function editComment($id) {
+        $data["comments"] = $this->model->getComment($id);
+        return view('editComment', $data);
+    }
+
     public function schoolById($id) {
         $data["info"] = $this->model->getSchoolById($id);
         $data["comments"] = $this->model->getSchoolComments($id);
@@ -41,6 +46,11 @@ class SchoolController extends Controller{
     public function submitComment($id) {
         $this->model->submitComment($id,$this->request->getPost('commentText'));
         return $this->schoolById($id);
+    }
+
+    public function updateComment($id) {
+        $this->model->updateComment($id,$this->request->getPost('commentText'));
+        return $this->schools();
     }
 
     public function booksPaginated($n) {

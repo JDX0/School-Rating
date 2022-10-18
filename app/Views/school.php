@@ -22,10 +22,11 @@ $this->endSection(); ?>
 							<p>', $skola->mesto_nazev, '</p>
 							
 							<a href="', $skola->link_skoly, '" >
-							<div class="bright-button">
-								<p >web</p>
+								<div class="bright-button">
+									<p >web</p>
 								</div>
 							</a>
+							
 							
 						</div>
 					</div>
@@ -49,6 +50,11 @@ $this->endSection(); ?>
 						<div class="card-content">
 							<h1>',$comment->text,'</h1>
 							<p>cid=',$comment->id,'</p>
+							<a href="/editComment/', $comment->id, '" >
+								<div class="bright-button">
+									<p>upravit</p>
+								</div>
+							</a>
 						</div>
 					</div>
 					

@@ -35,8 +35,9 @@ $routes->get('/', 'SchoolController::index');
 $routes->get('/schools', 'SchoolController::schools');
 $routes->get('/test', 'SchoolController::test');
 $routes->get('/school/(:any)', 'SchoolController::school/$1');
-
+$routes->get('/editComment/(:num)', 'SchoolController::editComment/$1');
 $routes->post('/school/(:num)/submit', 'SchoolController::submitComment/$1');
+$routes->post('/editComment/(:num)/submit', 'SchoolController::updateComment/$1');
 
 /*
  * --------------------------------------------------------------------
